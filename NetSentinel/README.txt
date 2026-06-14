@@ -7,6 +7,10 @@ DESCRIPTION:
   any IP address or hostname for open ports, classifies
   detected services as threats (LOW / MEDIUM / HIGH / CRITICAL),
   and generates a full threat report.
+TECHNOLOGIES USED:
+  - Language : Java
+  - GUI      : Swing
+  - Concepts : OOPs, Multithreading, File I/O, Collections
 
 HOW TO RUN (Windows):
   Double-click run.bat  OR  run from terminal:
