@@ -9,8 +9,7 @@ import java.net.URL;
 // Unit II: static methods, encapsulation
 public class ReputationChecker {
 
-    private static final String API_KEY = "3203b0c615463ab88419bb4bbc70e162aeaa87bbc5f4585dde8b43d787b06305dd83281984302597";
-
+    private static final String API_KEY = System.getenv("ABUSEIPDB_API_KEY");
     public static ReputationResult check(String ip) {
         if (isPrivateIP(ip)) {
             return new ReputationResult(ip, false, 0,
@@ -25,6 +24,9 @@ public class ReputationChecker {
 
     // Unit III: HttpURLConnection, BufferedReader, IOException
     private static ReputationResult checkAbuseIPDB(String ip) throws Exception {
+        if (API_KEY == null || API_KEY.isBlank()) {
+    throw new Exception("ABUSEIPDB_API_KEY environment variable is not configured.");
+}
         String urlStr = "https://api.abuseipdb.com/api/v2/check?ipAddress=" + ip + "&maxAgeInDays=90&verbose";
         URL url = new URL(urlStr);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
